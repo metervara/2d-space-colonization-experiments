@@ -25,7 +25,7 @@
     "url": "git+https://github.com/jasonwebb/2d-space-colonization-experiments.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "CC-BY-NC-SA-4.0",
   "keywords": [
     "space-colonization",
     "generative",

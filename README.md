@@ -4,6 +4,8 @@
 
 ## Library Usage (feat/library branch)
 
+This library is a modified version of jasonwebb/2d-space-colonization-experiments, licensed under CC BY-NC-SA 4.0. Modifications include packaging the algorithm as an npm-compatible ES module.
+
 This branch packages the core algorithm as a reusable ES module library.
 
 ### Install
