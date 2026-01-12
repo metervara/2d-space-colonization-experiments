@@ -1,8 +1,8 @@
-import Defaults from './Defaults';
+import Defaults from './Defaults.js';
 
 export default class Attractor {
   constructor(position, ctx, settings = {}) {
-    this.position = position;     // vec2 of this attractor's position
+    this.position = position;     // Vec2 of this attractor's position
     this.ctx = ctx;               // global canvas context
     this.settings = Object.assign({}, Defaults, settings);
 

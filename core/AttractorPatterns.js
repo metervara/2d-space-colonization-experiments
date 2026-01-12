@@ -1,7 +1,7 @@
-import Attractor from './Attractor';
-import Vec2 from 'vec2';
-import { random, map } from './Utilities';
-var SimplexNoise = require('simplex-noise');
+import Attractor from './Attractor.js';
+import Vec2 from './Vec2.js';
+import { random, map } from './Utilities.js';
+import { createNoise2D } from 'simplex-noise';
 
 export function getRandomAttractors(numAttractors, ctx, bounds = undefined, obstacles = undefined) {
   let attractors = [];
@@ -170,11 +170,11 @@ export function getWaveOfAttractors(ctx) {
 }
 
 export function applyNoise(attractors) {
-  let noise = new SimplexNoise();
+  const noise2D = createNoise2D();
 
   for(let attractor of attractors) {
-    attractor.position.x += noise.noise2D(attractor.position.x, attractor.position.y) * 10;
-    attractor.position.y += noise.noise2D(souattractorrce.position.x, attractor.position.y) * 10;
+    attractor.position.x += noise2D(attractor.position.x, attractor.position.y) * 10;
+    attractor.position.y += noise2D(attractor.position.x, attractor.position.y) * 10;
   }
 
   return attractors;

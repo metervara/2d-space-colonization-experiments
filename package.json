@@ -1,12 +1,24 @@
 {
-  "name": "2d-space-colonization-experiments",
+  "name": "space-colonization",
   "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
+  "description": "2D Space Colonization algorithm for generating organic branching patterns",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack-dev-server",
-    "build": "webpack"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -14,22 +26,26 @@
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jasonwebb/2d-space-colonization-experiments/issues"
+  "keywords": [
+    "space-colonization",
+    "generative",
+    "algorithm",
+    "venation",
+    "organic",
+    "branching"
+  ],
+  "dependencies": {
+    "file-saver": "^2.0.5",
+    "kdbush": "^4.0.2",
+    "point-in-polygon": "^1.1.0",
+    "simplex-noise": "^4.0.3",
+    "svg-pathdata": "^6.0.3",
+    "svg-points": "^6.0.1"
   },
-  "homepage": "https://github.com/jasonwebb/2d-space-colonization-experiments#readme",
   "devDependencies": {
-    "file-saver": "^2.0.2",
-    "kdbush": "^3.0.0",
-    "path": "^0.12.7",
-    "point-in-polygon": "^1.0.1",
-    "simplex-noise": "^2.4.0",
-    "svg-inline-loader": "^0.8.2",
-    "svg-pathdata": "^5.0.4",
-    "svg-points": "^6.0.1",
-    "vec2": "^1.6.1",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "vite": "^6.0.7"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

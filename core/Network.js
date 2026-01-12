@@ -1,7 +1,7 @@
-import Defaults from './Defaults';
+import Defaults from './Defaults.js';
 import KDBush from 'kdbush';
-import * as Vec2 from 'vec2';
-import { random } from './Utilities';
+import Vec2 from './Vec2.js';
+import { random } from './Utilities.js';
 
 export default class Network {
   constructor(ctx, settings) {
@@ -346,7 +346,12 @@ export default class Network {
   }
 
   buildSpatialIndices() {
-    this.nodesIndex = new KDBush(this.nodes, p => p.position.x, p => p.position.y);
+    // KDBush v4 API: create with size, add points, then finish
+    this.nodesIndex = new KDBush(this.nodes.length);
+    for (const node of this.nodes) {
+      this.nodesIndex.add(node.position.x, node.position.y);
+    }
+    this.nodesIndex.finish();
   }
 
   toggleNodes() {

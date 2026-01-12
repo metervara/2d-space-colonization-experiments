@@ -1,4 +1,4 @@
-import { Light, Dark, Realistic, Custom } from './ColorPresets';
+import { Light, Dark, Realistic, Custom } from './ColorPresets.js';
 
 export default {
   /**

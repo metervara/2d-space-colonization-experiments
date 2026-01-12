@@ -2,6 +2,64 @@
 >
 > [Additional media is available on my portfolio](https://jasonwebb.io/2020/03/space-colonization-branching-experiments-in-javascript/)
 
+## Library Usage (feat/library branch)
+
+This branch packages the core algorithm as a reusable ES module library.
+
+### Install
+
+```json
+{
+  "dependencies": {
+    "space-colonization": "github:metervara/2d-space-colonization-experiments#feat/library"
+  }
+}
+```
+
+### Basic Usage
+
+```javascript
+import { Network, Node, Vec2, AttractorPatterns, ColorPresets } from 'space-colonization';
+
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+
+// Create network with custom settings
+const network = new Network(ctx, {
+  Colors: ColorPresets.Light,
+  EnableCanalization: false
+});
+
+// Add random attractors
+network.attractors = AttractorPatterns.getRandomAttractors(500, ctx);
+
+// Add root node
+network.addNode(new Node(null, new Vec2(400, 300), true, ctx));
+
+// Animation loop
+function animate() {
+  network.update();
+  network.draw();
+  requestAnimationFrame(animate);
+}
+animate();
+```
+
+### Exports
+
+- `Network` - main simulation class
+- `Node` - branch node
+- `Attractor` - growth hormone source
+- `Vec2` - 2D vector math
+- `Path` - bounding/obstacle shapes
+- `SVGLoader` - load SVG paths
+- `AttractorPatterns` - generate attractor layouts
+- `Defaults` - default settings
+- `ColorPresets` - Light, Dark, Realistic, Custom
+- `Utilities` - helper functions
+
+---
+
 ## About space colonization
 
 <img src="https://i.imgur.com/WQoYWBx.gif" width="300" align="right">
@@ -63,20 +121,20 @@ A couple additional helper modules are also included there:
 
 ## Technologies used
 * Native [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API), specifically the [CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) interface, for all drawing
-* Vanilla ES6 JavaScript
-* Webpack build system with live-reloading dev server
+* Vanilla ES6 JavaScript modules
+* Vite build system
 
 ## Packages used
 * [KDBush](https://www.npmjs.com/package/kdbush) for KD-tree based spatial index
-* [vec2](https://www.npmjs.com/package/vec2) for simple, fast 2D vector math
-* [Webpack](https://webpack.js.org/) for modern JS (ES6) syntax, code modularization, bundling, and serving locally.
+* [simplex-noise](https://www.npmjs.com/package/simplex-noise) for noise-based attractor placement
+* [Vite](https://vitejs.dev/) for building the library
 
 ## Install and run notes
 > [!IMPORTANT]
-> This project requires Node v16.20.8.
+> This project requires Node v20 or higher.
 
 1. Run `npm install` to get all packages
-2. Run `npm run serve` to start up Webpack and launch the application in a browser window
+2. Run `npm run build` to build the library
 
 ## References
 

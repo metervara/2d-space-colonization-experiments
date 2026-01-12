@@ -1,7 +1,6 @@
-import Defaults from './Defaults';
-import * as Vec2 from 'vec2';
-
-let inside = require('point-in-polygon');
+import Defaults from './Defaults.js';
+import Vec2 from './Vec2.js';
+import inside from 'point-in-polygon';
 
 export default class Path {
   constructor(polygon, type, ctx, settings) {
@@ -23,7 +22,7 @@ export default class Path {
 
   // Check if provided coordinates are inside polygon defined by this Path
   contains(x, y) {
-    return inside([x, y], this.polygon);
+    return inside([x, y], this.transformedPolygon);
   }
 
   // Relative translation
@@ -62,11 +61,11 @@ export default class Path {
     let totalLength = 0;
 
     for(let i=1; i<this.polygon.length; i++) {
-      totalLength += Vec2(
+      totalLength += new Vec2(
         this.polygon[i][0] * this.scale,
         this.polygon[i][1] * this.scale
       ).distance(
-        Vec2(
+        new Vec2(
           this.polygon[i-1][0] * this.scale,
           this.polygon[i-1][1] * this.scale
         )

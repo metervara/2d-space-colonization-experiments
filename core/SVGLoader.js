@@ -1,4 +1,4 @@
-import {SVGPathData} from '../node_modules/svg-pathdata';
+import { SVGPathData } from 'svg-pathdata';
 
 export default class SVGLoader {
   constructor() {}

@@ -1,4 +1,4 @@
-import { exportSVG } from "./Utilities";
+import { exportSVG } from "./Utilities.js";
 
 export function setupKeyListeners(network) {
   document.addEventListener('keypress', (e) => {

@@ -1,9 +1,9 @@
-import Defaults from './Defaults';
+import Defaults from './Defaults.js';
 
 export default class Node {
   constructor(parent, position, isTip, ctx, settings, color = undefined) {
     this.parent = parent;       // reference to parent node, necessary for vein thickening later
-    this.position = position;   // {vec2} of this node's position
+    this.position = position;   // {Vec2} of this node's position
     this.isTip = isTip;         // {boolean}
     this.ctx = ctx;             // global canvas context for drawing
     this.settings = Object.assign({}, Defaults, settings);
